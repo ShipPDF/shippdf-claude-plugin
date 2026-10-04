@@ -1,0 +1,17 @@
+{
+  "name": "shippdf",
+  "metadata": {
+    "description": "ShipPDF tools and workflows for creating PDF templates and documents."
+  },
+  "owner": {
+    "name": "ShipPDF",
+    "url": "https://shippdf.com"
+  },
+  "plugins": [
+    {
+      "name": "shippdf",
+      "source": "./",
+      "description": "Create reusable PDF templates and generate documents with ShipPDF."
+    }
+  ]
+}

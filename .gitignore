@@ -1,0 +1,33 @@
+# Generated plugin archives and temporary validation files
+/dist/
+/tmp/
+/*.zip
+/*.plugin
+
+# Local credentials and environment overrides
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Claude's local settings and worktrees (keep .claude-plugin/ tracked)
+/.claude/settings.local.json
+/.claude/worktrees/
+
+# Python packaging script caches
+__pycache__/
+*.py[cod]
+/.venv/
+/venv/
+
+# Editor files and logs
+/.idea/
+/.vscode/
+*.swp
+*.swo
+*~
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
