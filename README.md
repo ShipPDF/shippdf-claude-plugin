@@ -20,6 +20,32 @@ Tools are limited to the selected workspace and granted scopes:
 | Create, edit, preview, or publish templates | `templates:write` |
 | Generate PDFs and retrieve results | `documents:create`, `documents:read` |
 
+## Data sent to ShipPDF
+
+The plugin connects to `https://mcp.shippdf.com/`. Claude sends the arguments for
+requested ShipPDF tool calls over HTTPS, authenticated with your OAuth connection.
+Depending on the workflow, these arguments include:
+
+- Project, template, and document IDs used to discover or retrieve your content.
+- Template names, document layouts, field schemas, sample data, and edit operations
+  used to create or revise templates.
+- Generation input and any requested metadata, such as invoice details, customer
+  information, or line items, plus an idempotency key for retry handling.
+- Public image URLs supplied for asset import. ShipPDF fetches those URLs from
+  their source hosts; those hosts receive the image fetch request.
+
+ShipPDF processes and stores templates, imported assets, and generated PDFs.
+Tool responses return requested content and document status to Claude, including
+short-lived preview or PDF download links when available. Opening those links
+requests the corresponding content from ShipPDF or its configured storage.
+
+Only include data you intend ShipPDF to process. The plugin's workflows do not
+request unrelated conversation history or credentials in chat. They use the
+workspace and permissions granted through your ShipPDF OAuth connection.
+
+For data collection, use, retention, and your privacy rights, see the
+[ShipPDF Privacy Policy](https://shippdf.com/privacy/).
+
 ## Workflows
 
 Ask naturally, or invoke a skill directly in Claude Code:
@@ -67,7 +93,7 @@ Build an upload archive from the repository root:
 python3 scripts/package_claude_plugin.py
 ```
 
-Upload the resulting `dist/shippdf-claude-plugin-0.1.0.zip` through Claude's
+Upload the resulting `dist/shippdf-claude-plugin-0.1.1.zip` through Claude's
 Customize plugin upload flow. Organization administrators can instead use
 Organization settings → Plugins & skills → Add → Upload a plugin. Enable the
 plugin and authenticate its ShipPDF connection in Claude's connector controls.
@@ -84,7 +110,7 @@ claude plugin validate --strict skills
 python3 scripts/package_claude_plugin.py
 ```
 
-The archive includes only the manifest, README, and skill files, with the manifest
+The archive includes the manifest, README, license, icon assets, and skill files, with the manifest
 at `.claude-plugin/plugin.json` in the archive root. Bump the plugin manifest
 version before distributing an update. Test authentication, template creation,
 draft editing, publishing, and one authorized generation in a test workspace
@@ -94,3 +120,13 @@ or complete OAuth sign-in.
 References: [Claude plugin format](https://code.claude.com/docs/en/plugins-reference),
 [MCP connections](https://code.claude.com/docs/en/mcp), and
 [plugin uploads](https://support.claude.com/en/articles/13837433-manage-plugins-for-your-organization).
+
+## Local server launchers
+
+This plugin connects directly to hosted MCP. It does not use `npx` or `uvx`
+launchers, so there are no launcher package versions to pin.
+
+## License
+
+The plugin files are licensed under [MIT](LICENSE). This license applies to
+this repository; ShipPDF service access remains governed by its own terms.

@@ -15,8 +15,14 @@ def main():
     ):
         raise ValueError("Plugin version must be a safe filename component")
 
-    files = [manifest, plugin / "README.md", *sorted((plugin / "skills").rglob("SKILL.md"))]
-    if len(files) < 3:
+    files = [
+        manifest,
+        plugin / "README.md",
+        plugin / "LICENSE",
+        *sorted((plugin / "skills").rglob("SKILL.md")),
+        *sorted(path for path in (plugin / "assets").rglob("*") if path.is_file()),
+    ]
+    if not list((plugin / "skills").glob("*/SKILL.md")):
         raise ValueError("Plugin must contain at least one skill")
     for path in files:
         if path.is_symlink() or not path.resolve().is_relative_to(plugin.resolve()):

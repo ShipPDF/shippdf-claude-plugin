@@ -1,17 +1,28 @@
 {
   "name": "shippdf",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Create, edit, and publish reusable PDF templates, then generate documents with ShipPDF.",
   "author": {
     "name": "ShipPDF",
     "url": "https://shippdf.com"
   },
   "homepage": "https://shippdf.com",
-  "keywords": ["pdf", "documents", "templates", "invoices", "shippdf"],
+  "keywords": [
+    "pdf",
+    "documents",
+    "templates",
+    "invoices",
+    "shippdf"
+  ],
   "mcpServers": {
     "shippdf": {
       "type": "http",
       "url": "https://mcp.shippdf.com/"
     }
-  }
+  },
+  "displayName": "ShipPDF",
+  "repository": "https://github.com/ShipPDF/shippdf-claude-plugin",
+  "icon": "./assets/shippdf-logo-square.png",
+  "privacyPolicyUrl": "https://shippdf.com/privacy/",
+  "license": "MIT"
 }
