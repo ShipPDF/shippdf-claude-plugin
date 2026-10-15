@@ -33,6 +33,8 @@ Depending on the workflow, these arguments include:
   information, or line items, plus an idempotency key for retry handling.
 - Public image URLs supplied for asset import. ShipPDF fetches those URLs from
   their source hosts; those hosts receive the image fetch request.
+- Image bytes you provide for local upload, such as a generated logo, uploaded
+  into an existing template.
 
 ShipPDF processes and stores templates, imported assets, and generated PDFs.
 Tool responses return requested content and document status to Claude, including
@@ -61,9 +63,9 @@ validated before publishing, edits preserve concurrent changes through optimisti
 locking, and generation retries reuse an idempotency key. A generation costs one
 credit. Browser draft previews cost no credits and do not verify PDF pagination.
 
-The current MCP tools support discovery, template authoring, public-URL image
-import, publishing, individual generation, and generation status. Local asset
-upload, batch generation, and webhook setup are not exposed by this plugin.
+The current MCP tools support discovery, template authoring, local image upload,
+public-URL image import, publishing, individual generation, and generation status.
+Batch generation and webhook setup are not exposed by this plugin.
 
 ## Claude Code installation
 
