@@ -95,12 +95,12 @@ archive root:
 
 ```sh
 mkdir -p dist
-zip -X dist/shippdf-claude-plugin-0.1.1.zip \
+zip -X dist/shippdf-claude-plugin-0.1.2.zip \
   .claude-plugin/plugin.json README.md LICENSE \
   skills/*/SKILL.md assets/*
 ```
 
-Upload the resulting `dist/shippdf-claude-plugin-0.1.1.zip` through Claude's
+Upload the resulting `dist/shippdf-claude-plugin-0.1.2.zip` through Claude's
 Customize plugin upload flow. Organization administrators can instead use
 Organization settings → Plugins & skills → Add → Upload a plugin. Enable the
 plugin and authenticate its ShipPDF connection in Claude's connector controls.
@@ -115,7 +115,7 @@ claude plugin validate --strict .claude-plugin/plugin.json
 claude plugin validate --strict .claude-plugin/marketplace.json
 claude plugin validate --strict skills
 mkdir -p dist
-zip -X dist/shippdf-claude-plugin-0.1.1.zip \
+zip -X dist/shippdf-claude-plugin-0.1.2.zip \
   .claude-plugin/plugin.json README.md LICENSE \
   skills/*/SKILL.md assets/*
 ```
