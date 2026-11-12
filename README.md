@@ -89,10 +89,15 @@ to Anthropic's directory.
 
 ## Claude Cowork installation
 
-Build an upload archive from the repository root:
+Build an upload archive from the repository root. This bundles only the
+distributable files, with the manifest at `.claude-plugin/plugin.json` in the
+archive root:
 
 ```sh
-python3 scripts/package_claude_plugin.py
+mkdir -p dist
+zip -X dist/shippdf-claude-plugin-0.1.1.zip \
+  .claude-plugin/plugin.json README.md LICENSE \
+  skills/*/SKILL.md assets/*
 ```
 
 Upload the resulting `dist/shippdf-claude-plugin-0.1.1.zip` through Claude's
@@ -109,7 +114,10 @@ From the repository root:
 claude plugin validate --strict .claude-plugin/plugin.json
 claude plugin validate --strict .claude-plugin/marketplace.json
 claude plugin validate --strict skills
-python3 scripts/package_claude_plugin.py
+mkdir -p dist
+zip -X dist/shippdf-claude-plugin-0.1.1.zip \
+  .claude-plugin/plugin.json README.md LICENSE \
+  skills/*/SKILL.md assets/*
 ```
 
 The archive includes the manifest, README, license, icon assets, and skill files, with the manifest
